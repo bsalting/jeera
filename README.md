@@ -19,8 +19,8 @@
 
 
 # requirements
-[ ] Display items using an axios get call
-[ ] Add a form in your index.html page which will enable a user to create an item using an axios call
-[ ] Add the ability to remove an item using an axios call
-[ ] Add the ability to edit an item using buttons within the rendered list of items
-[ ] Anything else you want to add
+- [ ] Display items using an axios get call
+- [ ] Add a form in your index.html page which will enable a user to create an item using an axios call
+- [ ] Add the ability to remove an item using an axios call
+- [ ] Add the ability to edit an item using buttons within the rendered list of items
+- [ ] Anything else you want to add
