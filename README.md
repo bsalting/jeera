@@ -8,11 +8,11 @@
   - hobbies
   - or anything else you are interested in!
 
-- name your database dealers_choice_spa_db
+- name your database **dealers_choice_spa_db**
 - npm i (express, nodemon, webpack, and webpack-cli are already installed)
 - server file is already added along with start script
 - client file entry point is in src/index.js
-- start:dev will start your server and run webpack
+- **start:dev** will start your server and run webpack
 - use the wireframe below as a guide
 
 <img src='https://raw.githubusercontent.com/FullstackAcademy/dealers-choice-spa/main/Dealers%20Choice%20Spa.png' />
