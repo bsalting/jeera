@@ -24,3 +24,7 @@
 - [ ] Add the ability to remove an item using an axios call
 - [ ] Add the ability to edit an item using buttons within the rendered list of items
 - [ ] Anything else you want to add
+
+
+# hints
+- for the server you will need api routes for GET, POST, PUT, DELETE
