@@ -9,8 +9,8 @@
   - or anything else you are interested in!
 
 - name your database dealers_choice_spa_db
-- npm i (nodemon, webpack, and webpack-cli are already installed)
-- server file is already added along with start script 
+- npm i (express, nodemon, webpack, and webpack-cli are already installed)
+- server file is already added along with start script
 - client file entry point is in src/index.js
 - start:dev will start your server and run webpack
 - use the wireframe below as a guide
