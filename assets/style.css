@@ -1,0 +1,36 @@
+body {
+  font-family: Trebuchet MS;
+  font-size: 16;
+}
+
+main {
+  display: flex;
+}
+
+section {
+  flex: 1;
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  outline: 1px solid #000;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#new-list li {
+  background-color: #ffc400;
+}
+
+#in-progress-list li {
+  background-color: #00c7e6;
+}
+
+#done-list li {
+  background-color: #57d9a3;
+}
