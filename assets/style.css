@@ -1,8 +1,12 @@
 body {
   font-family: Trebuchet MS;
   font-size: 16;
+  margin: 30px;
 }
 
+h1 {
+  margin-bottom: 0px;
+}
 main {
   display: flex;
 }
@@ -23,14 +27,26 @@ li {
   margin-bottom: 20px;
 }
 
-#new-list li {
+#new-list li,
+.new {
   background-color: #ffc400;
 }
 
-#in-progress-list li {
+#in-progress-list li,
+.progress {
   background-color: #00c7e6;
 }
 
-#done-list li {
+#done-list li,
+.done {
   background-color: #57d9a3;
+}
+
+.delete {
+  background-color: #ff7452;
+}
+
+input {
+  width: 320px;
+  margin-bottom: 10px;
 }

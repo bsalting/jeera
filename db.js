@@ -37,6 +37,7 @@ const Story = conn.define("story", {
   },
   status: {
     type: ENUM,
+    defaultValue: "New",
     values: ["New", "In-progress", "Done"],
     allowNull: false,
   },

@@ -5,10 +5,22 @@
     <title>Jeera</title>
   </head>
   <body>
-    <h1>Jeera - Kanban Board</h1>
+    <h1>Kanban Whiteboard</h1>
     <main>
       <section>
         <h2>Create</h2>
+        <form>
+          <label for="title"> Title </label> <br />
+          <input id="title" type="text" /> <br />
+          <label for="description"> Description </label> <br />
+          <input id="description" type="text" wrap="true" /> <br />
+          <label for="assignee"> Assignee </label> <br />
+          <input id="assignee" type="text" /> <br />
+          <label for="dueDate"> Due Date </label> <br />
+          <input id="dueDate" type="text" placeholder="yyyy-mm-dd" />
+          <br />
+          <button>Add</button>
+        </form>
       </section>
       <section>
         <h2>New</h2>

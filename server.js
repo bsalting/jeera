@@ -19,6 +19,14 @@ app.get("/api/stories", async (req, res, next) => {
   }
 });
 
+app.post("/api/stories", async (req, res, next) => {
+  try {
+    res.send(await Story.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 const setup = async () => {
   await conn.sync({ force: true });
   await Promise.all([
