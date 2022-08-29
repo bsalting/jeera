@@ -16,7 +16,7 @@
 - **start:dev** will start your server and run webpack
 - use the wireframe below as a guide
 
-<img src='https://raw.githubusercontent.com/FullstackAcademy/dealers-choice-spa/main/Dealers%20Choice%20Spa.png' />
+<img src='https://raw.githubusercontent.com/FullstackAcademy/dealers-choice-spa/main/Dealers%20Choice%20Spa.png?token=GHSAT0AAAAAABREB5E6XWKDN5QFSREEWMKMYYKJHQA' />
 
 # requirements
 
