@@ -30,7 +30,6 @@ app.post("/api/stories", async (req, res, next) => {
 app.put("/api/stories/:id", async (req, res, next) => {
   try {
     const story = await Story.findByPk(req.params.id);
-    console.log(story);
     res.send(await story.update(req.body));
   } catch (ex) {
     next(ex);
