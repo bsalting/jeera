@@ -75,14 +75,14 @@ const setup = async () => {
     Story.create({
       title: "Create Kanban board",
       description:
-        "Set-up Kanban board for team FSA-2207. Only a few story attributes will be available for now.",
-      assignee: "Natalie",
+        "Purchase Jeera license. Set-up Kanban board for team FSA-2207, with basic features.",
+      assignee: "Prof",
       dueDate: "2022-08-27",
       status: "Done",
     }),
     Story.create({
       title: "Product discovery with PAG and DCE",
-      description: "Brainstorm on opportunities from thw new DOL guidelines",
+      description: "Brainstorm on opportunities from the new DOL guidelines",
       assignee: "Beejay",
       dueDate: "2022-08-15",
       status: "Done",
