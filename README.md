@@ -1,5 +1,7 @@
 # Dealers Choice SPA
 
+# Deployed app: https://bos-jeera.herokuapp.com/
+
 - pick a topic you are interested in.
 
   - sports
@@ -24,7 +26,7 @@
 - [x] Add a form in your index.html page which will enable a user to create an item using an axios call
 - [x] Add the ability to remove an item using an axios call
 - [x] Add the ability to edit an item using buttons (and axios calls) within the rendered list of items
-- [~] Anything else you want to add
+- [x] Anything else you want to add
 
 # hints
 
