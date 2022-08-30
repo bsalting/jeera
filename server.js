@@ -27,10 +27,19 @@ app.post("/api/stories", async (req, res, next) => {
   }
 });
 
-app.delete("/api/stories/:id", async (req, res, next) => {
+app.put("/api/stories/:id", async (req, res, next) => {
   try {
     const story = await Story.findByPk(req.params.id);
     console.log(story);
+    res.send(await story.update(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.delete("/api/stories/:id", async (req, res, next) => {
+  try {
+    const story = await Story.findByPk(req.params.id);
     await story.destroy();
     res.sendStatus(204);
   } catch (ex) {
@@ -69,7 +78,14 @@ const setup = async () => {
       description:
         "Set-up Kanban board for team FSA-2207. Only a few story attributes will be available for now.",
       assignee: "Natalie",
-      dueDate: "2022-08-31",
+      dueDate: "2022-08-27",
+      status: "Done",
+    }),
+    Story.create({
+      title: "Product discovery with PAG and DCE",
+      description: "Brainstorm on opportunities from thw new DOL guidelines",
+      assignee: "Beejay",
+      dueDate: "2022-08-15",
       status: "Done",
     }),
   ]);

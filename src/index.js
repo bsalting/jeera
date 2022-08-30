@@ -17,8 +17,8 @@ const renderNew = () => {
         <span> <b>Details:</b> ${story.description} </span> </br>
         <span> <b>Assignee: </b> ${story.assignee}</span> </br>
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
-        <button class="progress"> o </button>
-        <button class="done"> o </button>
+        <button class="progress" data-id="${story.id}"> o </button>
+        <button class="done" data-id="${story.id}"> o </button>
         <button class="delete" data-id="${story.id}" data-loc="new"> x </button>
         </li>`;
     })
@@ -34,8 +34,8 @@ const renderInProg = () => {
         <span> <b>Details:</b> ${story.description} </span> </br>
         <span> <b>Assignee: </b> ${story.assignee}</span> </br>
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
-        <button class="new"> o </button>
-        <button class="done"> o </button>
+        <button class="new" data-id="${story.id}"> o </button>
+        <button class="done" data-id="${story.id}"> o </button>
         <button class="delete" data-id="${story.id}" data-loc="prog"> x </button>
       </li>`;
     })
@@ -51,8 +51,8 @@ const renderDone = () => {
         <span> <b>Details:</b> ${story.description} </span> </br>
         <span> <b>Assignee: </b> ${story.assignee}</span> </br>
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
-        <button class="new"> o </button>
-        <button class="progress"> o </button>
+        <button class="new" data-id="${story.id}"> o </button>
+        <button class="progress" data-id="${story.id}"> o </button>
         <button class="delete" data-id="${story.id}" data-loc="done"> x </button>
       </li>`;
     })
@@ -104,11 +104,28 @@ ulNew.addEventListener("click", async (ev) => {
   const target = ev.target;
   const id = target.getAttribute("data-id");
   if (target.tagName === "BUTTON") {
-    if (target.getAttribute("class") === "delete") {
-      await axios.delete(`/api/stories/${id}`);
-      newStories = newStories.filter((story) => story.id !== id);
-    } else {
-      console.log("try");
+    switch (target.getAttribute("class")) {
+      case "delete":
+        await axios.delete(`/api/stories/${id}`);
+        newStories = newStories.filter((story) => story.id !== id);
+        break;
+      case "progress":
+        const inProgResponse = await axios.put(`/api/stories/${id}`, {
+          status: "In-progress",
+        });
+        const inProgStory = inProgResponse.data;
+        newStories = newStories.filter((story) => story.id !== id);
+        inProgStories.push(inProgStory);
+        renderInProg();
+        break;
+      case "done":
+        const doneResponse = await axios.put(`/api/stories/${id}`, {
+          status: "Done",
+        });
+        const doneStory = doneResponse.data;
+        newStories = newStories.filter((story) => story.id !== id);
+        doneStories.push(doneStory);
+        renderDone();
     }
     renderNew();
   }
@@ -118,11 +135,28 @@ ulInProg.addEventListener("click", async (ev) => {
   const target = ev.target;
   const id = target.getAttribute("data-id");
   if (target.tagName === "BUTTON") {
-    if (target.getAttribute("class") === "delete") {
-      await axios.delete(`/api/stories/${id}`);
-      inProgStories = inProgStories.filter((story) => story.id !== id);
-    } else {
-      console.log("try");
+    switch (target.getAttribute("class")) {
+      case "delete":
+        await axios.delete(`/api/stories/${id}`);
+        inProgStories = inProgStories.filter((story) => story.id !== id);
+        break;
+      case "new":
+        const newResponse = await axios.put(`/api/stories/${id}`, {
+          status: "New",
+        });
+        const newStory = newResponse.data;
+        inProgStories = inProgStories.filter((story) => story.id !== id);
+        newStories.push(newStory);
+        renderNew();
+        break;
+      case "done":
+        const doneResponse = await axios.put(`/api/stories/${id}`, {
+          status: "Done",
+        });
+        const doneStory = doneResponse.data;
+        inProgStories = inProgStories.filter((story) => story.id !== id);
+        doneStories.push(doneStory);
+        renderDone();
     }
     renderInProg();
   }
@@ -132,13 +166,31 @@ ulDone.addEventListener("click", async (ev) => {
   const target = ev.target;
   const id = target.getAttribute("data-id");
   if (target.tagName === "BUTTON") {
-    if (target.getAttribute("class") === "delete") {
-      await axios.delete(`/api/stories/${id}`);
-      doneStories = doneStories.filter((story) => story.id !== id);
-    } else {
-      console.log("try");
+    switch (target.getAttribute("class")) {
+      case "delete":
+        await axios.delete(`/api/stories/${id}`);
+        doneStories = doneStories.filter((story) => story.id !== id);
+        break;
+      case "new":
+        const newResponse = await axios.put(`/api/stories/${id}`, {
+          status: "New",
+        });
+        const newStory = newResponse.data;
+        doneStories = doneStories.filter((story) => story.id !== id);
+        newStories.push(newStory);
+        renderNew();
+        break;
+      case "progress":
+        const inProgResponse = await axios.put(`/api/stories/${id}`, {
+          status: "In-progress",
+        });
+        const inProgStory = inProgResponse.data;
+        doneStories = doneStories.filter((story) => story.id !== id);
+        inProgStories.push(inProgStory);
+        renderInProg();
     }
     renderDone();
   }
 });
+
 setup();
