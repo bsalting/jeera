@@ -19,7 +19,7 @@ const renderNew = () => {
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
         <button class="progress"> o </button>
         <button class="done"> o </button>
-        <button class="delete"> x </button>
+        <button class="delete" data-id="${story.id}" data-loc="new"> x </button>
         </li>`;
     })
     .join("");
@@ -36,7 +36,7 @@ const renderInProg = () => {
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
         <button class="new"> o </button>
         <button class="done"> o </button>
-        <button class="delete"> x </button>
+        <button class="delete" data-id="${story.id}" data-loc="prog"> x </button>
       </li>`;
     })
     .join("");
@@ -53,7 +53,7 @@ const renderDone = () => {
         <span> <b>Due Date: </b> ${story.dueDate}</span> </br> </br>
         <button class="new"> o </button>
         <button class="progress"> o </button>
-        <button class="delete"> x </button>
+        <button class="delete" data-id="${story.id}" data-loc="done"> x </button>
       </li>`;
     })
     .join("");
@@ -100,4 +100,45 @@ form.addEventListener("submit", async (ev) => {
   form.reset();
 });
 
+ulNew.addEventListener("click", async (ev) => {
+  const target = ev.target;
+  const id = target.getAttribute("data-id");
+  if (target.tagName === "BUTTON") {
+    if (target.getAttribute("class") === "delete") {
+      await axios.delete(`/api/stories/${id}`);
+      newStories = newStories.filter((story) => story.id !== id);
+    } else {
+      console.log("try");
+    }
+    renderNew();
+  }
+});
+
+ulInProg.addEventListener("click", async (ev) => {
+  const target = ev.target;
+  const id = target.getAttribute("data-id");
+  if (target.tagName === "BUTTON") {
+    if (target.getAttribute("class") === "delete") {
+      await axios.delete(`/api/stories/${id}`);
+      inProgStories = inProgStories.filter((story) => story.id !== id);
+    } else {
+      console.log("try");
+    }
+    renderInProg();
+  }
+});
+
+ulDone.addEventListener("click", async (ev) => {
+  const target = ev.target;
+  const id = target.getAttribute("data-id");
+  if (target.tagName === "BUTTON") {
+    if (target.getAttribute("class") === "delete") {
+      await axios.delete(`/api/stories/${id}`);
+      doneStories = doneStories.filter((story) => story.id !== id);
+    } else {
+      console.log("try");
+    }
+    renderDone();
+  }
+});
 setup();

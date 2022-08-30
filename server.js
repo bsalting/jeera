@@ -27,13 +27,24 @@ app.post("/api/stories", async (req, res, next) => {
   }
 });
 
+app.delete("/api/stories/:id", async (req, res, next) => {
+  try {
+    const story = await Story.findByPk(req.params.id);
+    console.log(story);
+    await story.destroy();
+    res.sendStatus(204);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 const setup = async () => {
   await conn.sync({ force: true });
   await Promise.all([
     Story.create({
       title: "Impact analysis for VSI decomm",
       description:
-        "List all apps needing migration, and next steps, including timelines",
+        "List all apps needing migration, provide details needed by Controls.",
       assignee: "Beejay",
       dueDate: "2022-09-30",
       status: "New",
@@ -48,14 +59,15 @@ const setup = async () => {
     }),
     Story.create({
       title: "Rebranding of headers/footers/disclaimers in Salesforce",
-      description: "Replace JPMS with JPMA; use new verbiage from Compliance",
+      description: "Use new texts from Legal.",
       assignee: "Robin",
       dueDate: "2022-10-31",
       status: "In-progress",
     }),
     Story.create({
-      title: "Create Jeera board",
-      description: "Set-up Kanban board for team Alpha",
+      title: "Create Kanban board",
+      description:
+        "Set-up Kanban board for team FSA-2207. Only a few story attributes will be available for now.",
       assignee: "Natalie",
       dueDate: "2022-08-31",
       status: "Done",
